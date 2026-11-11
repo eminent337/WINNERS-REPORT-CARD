@@ -1,0 +1,6 @@
+{
+  "name": "Winners Family School - Mock 2 Report Studio",
+  "description": "Official Mock 2 Examination Report Card generator and print layout studio for Winners Family School (JHS Department).",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

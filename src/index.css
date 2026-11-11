@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #f1f5f9;
+    color: #0f172a;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Report Card Print & A4 Exact Geometry */
+.report-sheet {
+  width: 794px;
+  min-height: 1123px;
+  height: 1123px;
+  background: #ffffff;
+  color: #000000;
+  font-family: Arial, Helvetica, sans-serif;
+  position: relative;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+.report-sheet input,
+.report-sheet textarea {
+  user-select: text;
+}
+
+@page {
+  size: A4 portrait;
+  margin: 0;
+}
+
+@media print {
+  html,
+  body {
+    background: #ffffff !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 210mm;
+    height: auto;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-container {
+    padding: 0 !important;
+    margin: 0 !important;
+    display: block !important;
+    background: transparent !important;
+  }
+
+  .report-sheet-wrapper {
+    transform: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    page-break-after: always;
+    break-after: page;
+  }
+
+  .report-sheet-wrapper:last-child {
+    page-break-after: auto;
+    break-after: auto;
+  }
+
+  .report-sheet {
+    width: 210mm !important;
+    height: 297mm !important;
+    min-height: 297mm !important;
+    box-shadow: none !important;
+    margin: 0 auto !important;
+  }
+}
