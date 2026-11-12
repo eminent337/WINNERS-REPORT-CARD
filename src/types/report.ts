@@ -170,11 +170,8 @@ export function computeStudentSummary(
     0
   );
 
-  const sortedAll = [...validSubjects].sort(
-    (a, b) => (b.numericScore ?? 0) - (a.numericScore ?? 0)
-  );
-  const bestTwoSubjects = sortedAll
-    .slice(0, 2)
+  // Best Two Subjects must come strictly from the Elective subjects (the 2 electives in Best 6)
+  const bestTwoSubjects = best2Electives
     .map((s) => s.name)
     .join(', ');
 
@@ -186,6 +183,43 @@ export function computeStudentSummary(
     aggregateBest6: String(aggregateBest6).padStart(2, '0'),
     bestTwoSubjects,
   };
+}
+
+export function getOrdinal(n: number): string {
+  const s = ['TH', 'ST', 'ND', 'RD'];
+  const v = n % 100;
+  return n + (s[(v - 20) % 10] || s[v] || s[0]);
+}
+
+export function computeClassPositions(
+  students: StudentReport[],
+  scaleStyle: GesGradingScaleStyle = 'ges-standard'
+): Map<string, string> {
+  const scoresWithId = students.map((stu) => {
+    const summary = computeStudentSummary(stu, scaleStyle);
+    const raw = Number(stu.manualRawScore || summary.rawScoreBest6) || 0;
+    const agg = Number(stu.manualAggregate || summary.aggregateBest6) || 99;
+    return { id: stu.id, raw, agg };
+  });
+
+  const sorted = [...scoresWithId].sort(
+    (a, b) => b.raw - a.raw || a.agg - b.agg
+  );
+
+  const positionMap = new Map<string, string>();
+  let currentRank = 1;
+
+  for (let i = 0; i < sorted.length; i++) {
+    if (
+      i > 0 &&
+      (sorted[i].raw < sorted[i - 1].raw || sorted[i].agg > sorted[i - 1].agg)
+    ) {
+      currentRank = i + 1;
+    }
+    positionMap.set(sorted[i].id, getOrdinal(currentRank));
+  }
+
+  return positionMap;
 }
 
 export const INITIAL_SCHOOL_CONFIG: SchoolConfig = {
@@ -581,6 +615,9 @@ export const BECE_2027_CANDIDATES: BioDataCandidate[] = [
     gender: 'Male',
     dob: '21 - 10 - 2012',
     contact: '0243277271',
+    scores: { eng: '36', math: '24', sci: '55', soc: '46', rme: '42', comp: '50', arts: '68', cted: '41', fre: '41' },
+    rawScoreSheet: '279',
+    positionSheet: '27TH',
   },
   {
     sn: 38,
@@ -588,6 +625,9 @@ export const BECE_2027_CANDIDATES: BioDataCandidate[] = [
     gender: 'Female',
     dob: '25 - 02 - 2012',
     contact: '0240075738',
+    scores: { eng: '22', math: '29', sci: '40', soc: '52', rme: '40', comp: '47', arts: '58', cted: '43', fre: '50' },
+    rawScoreSheet: '261',
+    positionSheet: '33RD',
   },
   {
     sn: 39,
@@ -595,6 +635,9 @@ export const BECE_2027_CANDIDATES: BioDataCandidate[] = [
     gender: 'Female',
     dob: '5 - 01 - 2012',
     contact: '0550314623',
+    scores: { eng: '55', math: '39', sci: '50', soc: '68', rme: '54', comp: '51', arts: '67', cted: '55', fre: '43' },
+    rawScoreSheet: '334',
+    positionSheet: '10TH',
   },
   {
     sn: 40,
@@ -602,6 +645,9 @@ export const BECE_2027_CANDIDATES: BioDataCandidate[] = [
     gender: 'Female',
     dob: '01 - 08 - 2014',
     contact: '0243855880',
+    scores: { eng: '43', math: '31', sci: '47', soc: '42', rme: '44', comp: '42', arts: '53', cted: '45', fre: '40' },
+    rawScoreSheet: '261',
+    positionSheet: '33RD',
   },
   {
     sn: 41,
@@ -609,6 +655,9 @@ export const BECE_2027_CANDIDATES: BioDataCandidate[] = [
     gender: 'Male',
     dob: '9 - 03 - 2012',
     contact: '02422261416',
+    scores: { eng: '38', math: '45', sci: '52', soc: '59', rme: '44', comp: '48', arts: '69', cted: '48', fre: '40' },
+    rawScoreSheet: '311',
+    positionSheet: '22ND',
   },
 ];
 
