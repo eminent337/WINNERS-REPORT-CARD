@@ -255,8 +255,8 @@ export const BECE_2027_CANDIDATES: BioDataCandidate[] = [
     gender: 'Male',
     dob: '28 - 11 - 2013',
     contact: '0248907473',
-    scores: { eng: '50', math: '29', sci: '61', soc: '68', rme: '50', comp: '44', arts: '65', cted: '50', fre: '42' },
-    rawScoreSheet: '323',
+    scores: { eng: '50', math: '29', sci: '51', soc: '68', rme: '50', comp: '44', arts: '65', cted: '50', fre: '42' },
+    rawScoreSheet: '313',
     positionSheet: '21ST',
   },
   {
@@ -265,7 +265,7 @@ export const BECE_2027_CANDIDATES: BioDataCandidate[] = [
     gender: 'Female',
     dob: '24 - 12 - 2011',
     contact: '0531867572',
-    scores: { eng: '67', math: '63', sci: '91', soc: '86', rme: '84', comp: '80', arts: '62', cted: '55', fre: '45' },
+    scores: { eng: '67', math: '63', sci: '91', soc: '86', rme: '84', comp: '72', arts: '62', cted: '55', fre: '45' },
     rawScoreSheet: '463',
     positionSheet: '1ST',
   },
@@ -275,7 +275,7 @@ export const BECE_2027_CANDIDATES: BioDataCandidate[] = [
     gender: 'Female',
     dob: '18 - 07 - 2012',
     contact: '0538604588',
-    scores: { eng: '48', math: '34', sci: '67', soc: '68', rme: '59', comp: '45', arts: '57', cted: '43', fre: '50' },
+    scores: { eng: '48', math: '34', sci: '67', soc: '68', rme: '59', comp: '45', arts: '58', cted: '43', fre: '50' },
     rawScoreSheet: '334',
     positionSheet: '16TH',
   },
@@ -285,7 +285,7 @@ export const BECE_2027_CANDIDATES: BioDataCandidate[] = [
     gender: 'Male',
     dob: '12 - 08 - 2010',
     contact: '0555288127',
-    scores: { eng: '35', math: '19', sci: '42', soc: '52', rme: '39', comp: '40', arts: '47', cted: '48', fre: '35' },
+    scores: { eng: '23', math: '19', sci: '42', soc: '52', rme: '39', comp: '40', arts: '47', cted: '48', fre: '35' },
     rawScoreSheet: '231',
     positionSheet: '40TH',
   },
@@ -295,7 +295,7 @@ export const BECE_2027_CANDIDATES: BioDataCandidate[] = [
     gender: 'Male',
     dob: '23 - 07 - 2012',
     contact: '0277085003',
-    scores: { eng: '46', math: '48', sci: '67', soc: '63', rme: '47', comp: '57', arts: '54', cted: '56', fre: '51' },
+    scores: { eng: '46', math: '48', sci: '67', soc: '63', rme: '46', comp: '57', arts: '46', cted: '46', fre: '41' },
     rawScoreSheet: '327',
     positionSheet: '17TH',
   },
@@ -325,7 +325,7 @@ export const BECE_2027_CANDIDATES: BioDataCandidate[] = [
     gender: 'Female',
     dob: '9 - 03 - 2012',
     contact: '0244898939',
-    scores: { eng: '59', math: '36', sci: '61', soc: '53', rme: '55', comp: '52', arts: '62', cted: '42', fre: '40' },
+    scores: { eng: '59', math: '36', sci: '71', soc: '53', rme: '55', comp: '52', arts: '62', cted: '42', fre: '40' },
     rawScoreSheet: '336',
     positionSheet: '9TH',
   },
@@ -365,7 +365,7 @@ export const BECE_2027_CANDIDATES: BioDataCandidate[] = [
     gender: 'Female',
     dob: '12 - 11 - 2012',
     contact: '0242223245',
-    scores: { eng: '58', math: '34', sci: '56', soc: '59', rme: '38', comp: '49', arts: '53', cted: '45', fre: '38' },
+    scores: { eng: '50', math: '34', sci: '56', soc: '59', rme: '38', comp: '49', arts: '53', cted: '45', fre: '38' },
     rawScoreSheet: '301',
     positionSheet: '23RD',
   },
@@ -395,7 +395,7 @@ export const BECE_2027_CANDIDATES: BioDataCandidate[] = [
     gender: 'Male',
     dob: '22 - 08 - 2012',
     contact: '0242424551',
-    scores: { eng: '32', math: '28', sci: '49', soc: '54', rme: '39', comp: '40', arts: '69', cted: '42', fre: '26' },
+    scores: { eng: '32', math: '28', sci: '49', soc: '54', rme: '39', comp: '40', arts: '69', cted: '43', fre: '26' },
     rawScoreSheet: '275',
     positionSheet: '28TH',
   },
@@ -415,7 +415,7 @@ export const BECE_2027_CANDIDATES: BioDataCandidate[] = [
     gender: 'Male',
     dob: '11 - 07 - 2012',
     contact: '0242284984',
-    scores: { eng: '38', math: '24', sci: '44', soc: '44', rme: '35', comp: '37', arts: '64', cted: '43', fre: '40' },
+    scores: { eng: '38', math: '24', sci: '44', soc: '44', rme: '35', comp: '37', arts: '61', cted: '43', fre: '40' },
     rawScoreSheet: '254',
     positionSheet: '37TH',
   },
@@ -425,7 +425,7 @@ export const BECE_2027_CANDIDATES: BioDataCandidate[] = [
     gender: 'Male',
     dob: '15 - 05 - 2011',
     contact: '0244656132',
-    scores: { eng: '34', math: '19', sci: '52', soc: '59', rme: '37', comp: '43', arts: '60', cted: '45', fre: '42' },
+    scores: { eng: '34', math: '19', sci: '52', soc: '59', rme: '37', comp: '43', arts: '60', cted: '46', fre: '42' },
     rawScoreSheet: '270',
     positionSheet: '30TH',
   },
@@ -465,7 +465,7 @@ export const BECE_2027_CANDIDATES: BioDataCandidate[] = [
     gender: 'Female',
     dob: '20 - 07 - 2013',
     contact: '0557202129',
-    scores: { eng: '48', math: '32', sci: '71', soc: '66', rme: '50', comp: '40', arts: '53', cted: '48', fre: '60' },
+    scores: { eng: '48', math: '32', sci: '71', soc: '66', rme: '49', comp: '40', arts: '49', cted: '48', fre: '60' },
     rawScoreSheet: '326',
     positionSheet: '18TH',
   },
@@ -525,7 +525,7 @@ export const BECE_2027_CANDIDATES: BioDataCandidate[] = [
     gender: 'Female',
     dob: '15 - 04 - 2012',
     contact: '0241797236',
-    scores: { eng: '28', math: '35', sci: '45', soc: '35', rme: '33', comp: '41', arts: '63', cted: '44', fre: '35' },
+    scores: { eng: '38', math: '35', sci: '45', soc: '35', rme: '33', comp: '41', arts: '63', cted: '44', fre: '35' },
     rawScoreSheet: '260',
     positionSheet: '35TH',
   },
@@ -661,32 +661,61 @@ export const BECE_2027_CANDIDATES: BioDataCandidate[] = [
   },
 ];
 
+export function getGesTeacherRemark(
+  aggregate: number,
+  rawScore: number
+): string {
+  if (aggregate <= 9 || rawScore >= 400) {
+    return 'An outstanding performance. Keep it up!';
+  }
+  if (aggregate <= 15 || rawScore >= 350) {
+    return 'Very impressive result. Keep working hard!';
+  }
+  if (aggregate <= 22 || rawScore >= 300) {
+    return 'Good performance. Work harder for higher grades.';
+  }
+  if (aggregate <= 30 || rawScore >= 250) {
+    return 'Satisfactory effort. Needs more study time.';
+  }
+  if (aggregate <= 38 || rawScore >= 200) {
+    return 'Fair result. Revise weak subjects regularly.';
+  }
+  return 'Needs urgent improvement and focused study discipline.';
+}
+
 export const INITIAL_STUDENTS: StudentReport[] = BECE_2027_CANDIDATES.map(
-  (cand) => ({
-    id: `stu-${String(cand.sn).padStart(2, '0')}`,
-    serialNumber: cand.sn,
-    name: cand.name,
-    gender: cand.gender,
-    dateOfBirth: cand.dob,
-    parentContact: cand.contact,
-    studentClass: 'BASIC NINE (9)',
-    noOnRoll: '41',
-    position: cand.positionSheet ?? '',
-    subjects: DEFAULT_SUBJECTS.map((s) => ({
-      ...s,
-      score:
-        cand.scores?.[s.id as keyof NonNullable<BioDataCandidate['scores']>] ??
-        '',
-    })),
-    manualTotalMark: '',
-    manualAggregate: '',
-    manualRawScore: cand.rawScoreSheet ?? '',
-    manualBestTwoSubjects: '',
-    classTeacherRemarks: '',
-    classTeacherSignature: '',
-    schoolFees: '',
-    arrears: '',
-    totalFees: '',
-    headmasterRemark: '',
-  })
+  (cand) => {
+    const studentObj: StudentReport = {
+      id: `stu-${String(cand.sn).padStart(2, '0')}`,
+      serialNumber: cand.sn,
+      name: cand.name,
+      gender: cand.gender,
+      dateOfBirth: cand.dob,
+      parentContact: cand.contact,
+      studentClass: 'BASIC NINE (9)',
+      noOnRoll: '41',
+      position: cand.positionSheet ?? '',
+      subjects: DEFAULT_SUBJECTS.map((s) => ({
+        ...s,
+        score:
+          cand.scores?.[s.id as keyof NonNullable<BioDataCandidate['scores']>] ??
+          '',
+      })),
+      manualTotalMark: '',
+      manualAggregate: '',
+      manualRawScore: cand.rawScoreSheet ?? '',
+      manualBestTwoSubjects: '',
+      classTeacherRemarks: '',
+      classTeacherSignature: '',
+      schoolFees: '',
+      arrears: '',
+      totalFees: '',
+      headmasterRemark: '',
+    };
+    const summary = computeStudentSummary(studentObj, 'ges-standard');
+    const agg = Number(summary.aggregateBest6) || 30;
+    const raw = Number(summary.rawScoreBest6) || 250;
+    studentObj.classTeacherRemarks = getGesTeacherRemark(agg, raw);
+    return studentObj;
+  }
 );

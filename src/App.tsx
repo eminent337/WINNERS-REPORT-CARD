@@ -1109,56 +1109,7 @@ export default function App() {
                     />
                   </div>
 
-                  <div className="grid grid-cols-3 gap-2.5">
-                    <div>
-                      <label className="block text-xs font-medium text-slate-700 mb-1">
-                        School Fees GH¢
-                      </label>
-                      <input
-                        type="text"
-                        value={activeStudent.schoolFees}
-                        onChange={(e) =>
-                          handleUpdateStudent({
-                            ...activeStudent,
-                            schoolFees: e.target.value,
-                          })
-                        }
-                        className="w-full px-2.5 py-2 text-sm bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-900 tabular-nums"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-medium text-slate-700 mb-1">
-                        Arrears GH¢
-                      </label>
-                      <input
-                        type="text"
-                        value={activeStudent.arrears}
-                        onChange={(e) =>
-                          handleUpdateStudent({
-                            ...activeStudent,
-                            arrears: e.target.value,
-                          })
-                        }
-                        className="w-full px-2.5 py-2 text-sm bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-900 tabular-nums"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-medium text-slate-700 mb-1">
-                        Total GH¢
-                      </label>
-                      <input
-                        type="text"
-                        value={activeStudent.totalFees}
-                        onChange={(e) =>
-                          handleUpdateStudent({
-                            ...activeStudent,
-                            totalFees: e.target.value,
-                          })
-                        }
-                        className="w-full px-2.5 py-2 text-sm bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-900 tabular-nums"
-                      />
-                    </div>
-                  </div>
+
 
                   <div>
                     <label className="block text-xs font-medium text-slate-700 mb-1">

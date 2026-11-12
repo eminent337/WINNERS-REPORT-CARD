@@ -21,6 +21,7 @@ import {
   type SchoolConfig,
   type StudentReport,
   computeStudentSummary,
+  getGesTeacherRemark,
 } from '../types/report.ts';
 
 const NO_BORDER = {
@@ -147,7 +148,9 @@ function createLabeledUnderlineRow(
 function buildStudentSection(
   config: SchoolConfig,
   student: StudentReport,
-  crestBuffer: ArrayBuffer | Uint8Array | null
+  crestBuffer: ArrayBuffer | Uint8Array | null,
+  headmasterSignatureBuffer?: ArrayBuffer | Uint8Array | null,
+  teacherSignatureBuffer?: ArrayBuffer | Uint8Array | null
 ) {
   const summary = computeStudentSummary(
     student,
@@ -666,10 +669,11 @@ function buildStudentSection(
     label: string,
     value: string,
     boldLabel = true,
-    labelPct = 28
+    labelPct = 28,
+    imageBuffer?: ArrayBuffer | Uint8Array | null
   ) =>
     new TableRow({
-      height: { value: 420, rule: HeightRule.ATLEAST },
+      height: { value: 460, rule: HeightRule.ATLEAST },
       children: [
         new TableCell({
           width: { size: labelPct, type: WidthType.PERCENTAGE },
@@ -696,6 +700,15 @@ function buildStudentSection(
           children: [
             new Paragraph({
               children: [
+                ...(imageBuffer
+                  ? [
+                      new ImageRun({
+                        data: imageBuffer,
+                        transformation: { width: 70, height: 16 },
+                        type: 'png',
+                      }),
+                    ]
+                  : []),
                 new TextRun({
                   text: value ? ` ${value}` : ' ',
                   size: 19,
@@ -707,6 +720,13 @@ function buildStudentSection(
         }),
       ],
     });
+
+  const teacherRemark =
+    student.classTeacherRemarks.trim() ||
+    getGesTeacherRemark(
+      Number(summary.aggregateBest6) || 30,
+      Number(summary.rawScoreBest6) || 250
+    );
 
   const bottomSectionTable = new Table({
     width: { size: 100, type: WidthType.PERCENTAGE },
@@ -734,7 +754,7 @@ function buildStudentSection(
       ),
       createFullWidthUnderlineRow(
         "Class Teacher's Remarks:",
-        student.classTeacherRemarks,
+        teacherRemark,
         false,
         24
       ),
@@ -742,21 +762,15 @@ function buildStudentSection(
         "Class Teacher's Signature:",
         student.classTeacherSignature,
         false,
-        25
+        25,
+        teacherSignatureBuffer
       ),
-      createLabeledUnderlineRow(
-        'School Fees GH¢:',
-        student.schoolFees,
-        'Arrears GH¢:',
-        student.arrears,
-        420
-      ),
-      createFullWidthUnderlineRow('TOTAL GH¢:', student.totalFees, true, 15),
       createFullWidthUnderlineRow(
         'Headmasters Remark / Sign / Official Stamp:',
         student.headmasterRemark,
         true,
-        42
+        42,
+        headmasterSignatureBuffer
       ),
     ],
   });
@@ -822,10 +836,18 @@ function buildStudentSection(
 export function createReportDocxDocument(
   config: SchoolConfig,
   studentsToExport: StudentReport[],
-  crestBuffer: ArrayBuffer | Uint8Array | null
+  crestBuffer: ArrayBuffer | Uint8Array | null,
+  headmasterSignatureBuffer?: ArrayBuffer | Uint8Array | null,
+  teacherSignatureBuffer?: ArrayBuffer | Uint8Array | null
 ): Document {
   const sections = studentsToExport.map((student) =>
-    buildStudentSection(config, student, crestBuffer)
+    buildStudentSection(
+      config,
+      student,
+      crestBuffer,
+      headmasterSignatureBuffer,
+      teacherSignatureBuffer
+    )
   );
 
   return new Document({

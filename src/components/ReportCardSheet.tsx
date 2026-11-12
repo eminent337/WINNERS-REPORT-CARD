@@ -759,8 +759,8 @@ export const ReportCardSheet: React.FC<ReportCardSheetProps> = ({
             </colgroup>
             <thead>
               <tr
-                className="bg-[#dcdcdc] border-b-[1.5px] border-black font-bold text-[12.5px] uppercase"
-                style={{ height: '47px' }}
+                className="bg-[#dcdcdc] border-b-[1.5px] border-black font-bold text-[13.5px] uppercase"
+                style={{ height: '48px' }}
               >
                 <th className="border-r border-black text-left px-3.5 py-1.5">
                   SUBJECT
@@ -797,8 +797,8 @@ export const ReportCardSheet: React.FC<ReportCardSheetProps> = ({
                 return (
                   <tr
                     key={sub.id}
-                    className="border-b border-black text-[12px]"
-                    style={{ height: '40px' }}
+                    className="border-b border-black text-[13px]"
+                    style={{ height: '44px' }}
                   >
                     {/* Subject Name */}
                     <td className="border-r border-black font-bold uppercase px-3.5 py-1 text-left align-middle">
@@ -817,7 +817,7 @@ export const ReportCardSheet: React.FC<ReportCardSheetProps> = ({
                           readOnly={readOnly}
                           value={sub.score}
                           onChange={(e) => updateSubjectScore(sub.id, e.target.value)}
-                          className="w-full text-center font-semibold text-black bg-transparent focus:outline-none focus:bg-amber-50/70 print:bg-transparent tabular-nums"
+                          className="w-full text-center font-semibold text-black bg-transparent focus:outline-none focus:bg-amber-50/70 print:bg-transparent tabular-nums text-[13.5px]"
                         />
                       ) : null}
 
@@ -831,7 +831,7 @@ export const ReportCardSheet: React.FC<ReportCardSheetProps> = ({
 
                     {/* Grade - Continuous straight line on right */}
                     <td
-                      className={`relative px-1.5 py-1 text-center align-middle font-semibold tabular-nums ${
+                      className={`relative px-1.5 py-1 text-center align-middle font-semibold tabular-nums text-[13.5px] ${
                         config.showTableTickMarks ? '' : 'border-r border-black'
                       }`}
                     >
@@ -846,7 +846,7 @@ export const ReportCardSheet: React.FC<ReportCardSheetProps> = ({
                     </td>
 
                     {/* Meaning */}
-                    <td className="relative px-2 py-1 text-center align-middle font-semibold uppercase">
+                    <td className="relative px-2 py-1 text-center align-middle font-semibold uppercase text-[13px]">
                       {meaningText}
                       {config.showTableTickMarks && idx < summary.scoredSubjects.length - 1 && (
                         <span
@@ -860,7 +860,7 @@ export const ReportCardSheet: React.FC<ReportCardSheetProps> = ({
               })}
 
               {/* TOTAL MARK ROW */}
-              <tr style={{ height: '36px' }} className="text-[12px]">
+              <tr style={{ height: '40px' }} className="text-[13px]">
                 <td className="bg-[#dcdcdc] border-r border-black font-bold uppercase px-3.5 py-1 text-left align-middle">
                   TOTAL MARK
                 </td>
@@ -870,21 +870,21 @@ export const ReportCardSheet: React.FC<ReportCardSheetProps> = ({
                     readOnly={readOnly}
                     value={displayTotalMark}
                     onChange={(e) => updateField('manualTotalMark', e.target.value)}
-                    className="w-full text-center font-bold text-black bg-transparent focus:outline-none focus:bg-amber-50/70 print:bg-transparent tabular-nums"
+                    className="w-full text-center font-bold text-black bg-transparent focus:outline-none focus:bg-amber-50/70 print:bg-transparent tabular-nums text-[13.5px]"
                   />
                 </td>
                 <td className="border-r border-black px-1.5 py-1 text-center align-middle font-bold tabular-nums" />
-                <td className="px-3 py-1 text-right align-middle font-bold text-[11px]" />
+                <td className="px-3 py-1 text-right align-middle font-bold text-[12px]" />
               </tr>
             </tbody>
           </table>
         </div>
 
         {/* BOTTOM SECTION: AGGREGATE, REMARKS, SIGNATURE, FEES & HEADMASTER STAMP */}
-        <div className="space-y-4 text-[12px] leading-none pt-1">
+        <div className="space-y-4 text-[13px] leading-none pt-1">
           {/* Aggregate & Raw Score Row */}
           <div className="flex items-end justify-between gap-6">
-            <div className="flex items-end w-[275px]">
+            <div className="flex items-end w-[285px]">
               <span className="font-bold uppercase text-black shrink-0 pr-3">
                 AGGREGATE:
               </span>
@@ -894,12 +894,12 @@ export const ReportCardSheet: React.FC<ReportCardSheetProps> = ({
                   readOnly={readOnly}
                   value={displayAggregate}
                   onChange={(e) => updateField('manualAggregate', e.target.value)}
-                  className="w-full text-center font-semibold bg-transparent text-black focus:outline-none focus:bg-amber-50/70 print:bg-transparent tabular-nums"
+                  className="w-full text-center font-bold bg-transparent text-black focus:outline-none focus:bg-amber-50/70 print:bg-transparent tabular-nums text-[13.5px]"
                 />
               </div>
             </div>
 
-            <div className="flex items-end flex-1 max-w-[300px]">
+            <div className="flex items-end flex-1 max-w-[310px]">
               <span className="font-bold uppercase text-black shrink-0 pr-3">
                 RAW SCORE:
               </span>
@@ -909,7 +909,7 @@ export const ReportCardSheet: React.FC<ReportCardSheetProps> = ({
                   readOnly={readOnly}
                   value={displayRawScore}
                   onChange={(e) => updateField('manualRawScore', e.target.value)}
-                  className="w-full text-center font-semibold bg-transparent text-black focus:outline-none focus:bg-amber-50/70 print:bg-transparent tabular-nums"
+                  className="w-full text-center font-bold bg-transparent text-black focus:outline-none focus:bg-amber-50/70 print:bg-transparent tabular-nums text-[13.5px]"
                 />
               </div>
             </div>
@@ -926,14 +926,14 @@ export const ReportCardSheet: React.FC<ReportCardSheetProps> = ({
                 readOnly={readOnly}
                 value={displayBestTwo}
                 onChange={(e) => updateField('manualBestTwoSubjects', e.target.value)}
-                className="w-full bg-transparent text-black font-medium uppercase pl-1 focus:outline-none focus:bg-amber-50/70 print:bg-transparent"
+                className="w-full bg-transparent text-black font-semibold uppercase pl-1 focus:outline-none focus:bg-amber-50/70 print:bg-transparent text-[13px]"
               />
             </div>
           </div>
 
           {/* Class Teacher's Remarks */}
           <div className="flex items-end">
-            <span className="font-normal text-black shrink-0 pr-2.5">
+            <span className="font-bold text-black shrink-0 pr-2.5 text-[14px]">
               Class Teacher&apos;s Remarks:
             </span>
             <div className="flex-1 border-b border-black pb-[2px]">
@@ -942,88 +942,49 @@ export const ReportCardSheet: React.FC<ReportCardSheetProps> = ({
                 readOnly={readOnly}
                 value={student.classTeacherRemarks}
                 onChange={(e) => updateField('classTeacherRemarks', e.target.value)}
-                className="w-full bg-transparent text-black italic pl-1 focus:outline-none focus:bg-amber-50/70 print:bg-transparent"
+                className="w-full bg-transparent text-black italic font-medium pl-1 focus:outline-none focus:bg-amber-50/70 print:bg-transparent text-[14.5px]"
               />
             </div>
           </div>
 
           {/* Class Teacher's Signature */}
-          <div className="flex items-end">
-            <span className="font-normal text-black shrink-0 pr-2.5">
+          <div className="flex items-end relative">
+            <span className="font-normal text-black shrink-0 pr-2.5 pb-[2px]">
               Class Teacher&apos;s Signature:
             </span>
-            <div className="flex-1 border-b border-black pb-[2px]">
+            <div className="flex-1 border-b border-black relative pb-[2px] min-h-[38px] flex items-end">
+              <img
+                src="/assets/teacher_signature.png"
+                alt="Class Teacher Signature"
+                className="h-9 max-w-[180px] object-contain absolute left-4 -bottom-1 pointer-events-none print:h-9"
+              />
               <input
                 type="text"
                 readOnly={readOnly}
                 value={student.classTeacherSignature}
                 onChange={(e) => updateField('classTeacherSignature', e.target.value)}
-                className="w-full bg-transparent text-black pl-1 focus:outline-none focus:bg-amber-50/70 print:bg-transparent"
-              />
-            </div>
-          </div>
-
-          {/* School Fees GH¢ & Arrears GH¢ */}
-          <div className="grid grid-cols-12 gap-6 items-end">
-            <div className="col-span-6 flex items-end">
-              <span className="font-bold text-black shrink-0 pr-2">
-                School Fees GH¢:
-              </span>
-              <div className="flex-1 border-b border-black pb-[2px]">
-                <input
-                  type="text"
-                  readOnly={readOnly}
-                  value={student.schoolFees}
-                  onChange={(e) => updateField('schoolFees', e.target.value)}
-                  className="w-full bg-transparent text-black pl-1 focus:outline-none focus:bg-amber-50/70 print:bg-transparent tabular-nums"
-                />
-              </div>
-            </div>
-
-            <div className="col-span-6 flex items-end">
-              <span className="font-bold text-black shrink-0 pr-2">
-                Arrears GH¢:
-              </span>
-              <div className="flex-1 border-b border-black pb-[2px]">
-                <input
-                  type="text"
-                  readOnly={readOnly}
-                  value={student.arrears}
-                  onChange={(e) => updateField('arrears', e.target.value)}
-                  className="w-full bg-transparent text-black pl-1 focus:outline-none focus:bg-amber-50/70 print:bg-transparent tabular-nums"
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* TOTAL GH¢ */}
-          <div className="flex items-end">
-            <span className="font-bold uppercase text-black shrink-0 pr-2">
-              TOTAL GH¢:
-            </span>
-            <div className="flex-1 border-b border-black pb-[2px]">
-              <input
-                type="text"
-                readOnly={readOnly}
-                value={student.totalFees}
-                onChange={(e) => updateField('totalFees', e.target.value)}
-                className="w-full bg-transparent text-black pl-1 focus:outline-none focus:bg-amber-50/70 print:bg-transparent tabular-nums"
+                className="w-full bg-transparent text-black pl-44 focus:outline-none focus:bg-amber-50/70 print:bg-transparent relative z-10 font-medium text-[13px]"
               />
             </div>
           </div>
 
           {/* Headmasters Remark / Sign / Official Stamp */}
-          <div className="flex items-end pt-0.5">
-            <span className="font-bold text-black shrink-0 pr-2">
+          <div className="flex items-end pt-1 relative">
+            <span className="font-bold text-black shrink-0 pr-2 pb-[2px]">
               Headmasters Remark / Sign / Official Stamp:
             </span>
-            <div className="flex-1 border-b border-black pb-[2px]">
+            <div className="flex-1 border-b border-black relative pb-[2px] min-h-[32px] flex items-end">
+              <img
+                src="/assets/headmaster_signature.png"
+                alt="Headmaster Signature"
+                className="h-6 max-w-[160px] object-contain absolute left-4 -bottom-0.5 pointer-events-none print:h-6"
+              />
               <input
                 type="text"
                 readOnly={readOnly}
                 value={student.headmasterRemark}
                 onChange={(e) => updateField('headmasterRemark', e.target.value)}
-                className="w-full bg-transparent text-black pl-1 focus:outline-none focus:bg-amber-50/70 print:bg-transparent"
+                className="w-full bg-transparent text-black pl-40 focus:outline-none focus:bg-amber-50/70 print:bg-transparent relative z-10 font-medium text-[13px]"
               />
             </div>
           </div>

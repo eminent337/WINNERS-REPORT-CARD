@@ -3,11 +3,14 @@ import {
   SchoolConfig,
   StudentReport,
   computeStudentSummary,
+  getGesTeacherRemark,
 } from '../types/report';
 
 export interface LoadedPdfAssets {
   crestDataUrl: string | null;
   titleDataUrl: string | null;
+  signatureDataUrl: string | null;
+  teacherSignatureDataUrl: string | null;
 }
 
 async function loadImageAsDataUrl(
@@ -46,16 +49,26 @@ async function loadImageAsDataUrl(
 let cachedAssets: LoadedPdfAssets = {
   crestDataUrl: null,
   titleDataUrl: null,
+  signatureDataUrl: null,
+  teacherSignatureDataUrl: null,
 };
 let assetsLoaded = false;
 
 export async function preloadPdfAssets(): Promise<LoadedPdfAssets> {
   if (assetsLoaded) return cachedAssets;
-  const [crestDataUrl, titleDataUrl] = await Promise.all([
-    loadImageAsDataUrl('/assets/school_crest.png', 168, 172),
-    loadImageAsDataUrl('/assets/school_title.svg', 449, 32),
-  ]);
-  cachedAssets = { crestDataUrl, titleDataUrl };
+  const [crestDataUrl, titleDataUrl, signatureDataUrl, teacherSignatureDataUrl] =
+    await Promise.all([
+      loadImageAsDataUrl('/assets/school_crest.png', 168, 172),
+      loadImageAsDataUrl('/assets/school_title.svg', 449, 32),
+      loadImageAsDataUrl('/assets/headmaster_signature.png', 300, 60),
+      loadImageAsDataUrl('/assets/teacher_signature.png', 300, 80),
+    ]);
+  cachedAssets = {
+    crestDataUrl,
+    titleDataUrl,
+    signatureDataUrl,
+    teacherSignatureDataUrl,
+  };
   assetsLoaded = true;
   return cachedAssets;
 }
@@ -640,6 +653,13 @@ export function renderStudentPageOnJsPdf(
     displayBestTwo.toUpperCase()
   );
 
+  const teacherRemark =
+    student.classTeacherRemarks.trim() ||
+    getGesTeacherRemark(
+      Number(summary.aggregateBest6) || 30,
+      Number(summary.rawScoreBest6) || 250
+    );
+
   curY += rowGap;
   drawLabeledUnderlineField(
     doc,
@@ -647,58 +667,62 @@ export function renderStudentPageOnJsPdf(
     curY,
     contentWidth,
     "Class Teacher's Remarks:",
-    student.classTeacherRemarks,
-    { boldLabel: false, italicValue: true }
+    teacherRemark,
+    { boldLabel: true, italicValue: true, maxValueFontSize: 10.5 }
   );
 
   curY += rowGap;
+  const teacherSigY = curY;
   drawLabeledUnderlineField(
     doc,
     contentLeft,
-    curY,
+    teacherSigY,
     contentWidth,
     "Class Teacher's Signature:",
     student.classTeacherSignature,
     { boldLabel: false }
   );
 
-  curY += rowGap;
-  drawLabeledUnderlineField(
-    doc,
-    contentLeft,
-    curY,
-    300,
-    'School Fees GH¢:',
-    student.schoolFees
-  );
-  drawLabeledUnderlineField(
-    doc,
-    contentLeft + 332,
-    curY,
-    300,
-    'Arrears GH¢:',
-    student.arrears
-  );
+  if (assets.teacherSignatureDataUrl) {
+    try {
+      doc.addImage(
+        assets.teacherSignatureDataUrl,
+        'PNG',
+        contentLeft + 160,
+        teacherSigY - 14,
+        58,
+        18
+      );
+    } catch {
+      // ignore
+    }
+  }
 
-  curY += rowGap;
+  curY += rowGap + 4;
+  const headmasterY = curY;
   drawLabeledUnderlineField(
     doc,
     contentLeft,
-    curY,
-    contentWidth,
-    'TOTAL GH¢:',
-    student.totalFees
-  );
-
-  curY += rowGap;
-  drawLabeledUnderlineField(
-    doc,
-    contentLeft,
-    curY,
+    headmasterY,
     contentWidth,
     'Headmasters Remark / Sign / Official Stamp:',
     student.headmasterRemark
   );
+
+  if (assets.signatureDataUrl) {
+    try {
+      doc.addImage(
+        assets.signatureDataUrl,
+        'PNG',
+        contentLeft + 235,
+        headmasterY - 7,
+        42,
+        8
+      );
+    } catch {
+      // ignore
+    }
+  }
 }
 
 export function formatStudentPdfFilename(

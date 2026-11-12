@@ -145,7 +145,31 @@ async function startServer() {
         crestBuffer = fs.readFileSync(crestPath);
       }
 
-      const doc = createReportDocxDocument(config, students, crestBuffer);
+      let headmasterSignatureBuffer: Buffer | null = null;
+      const headmasterSigPath = path.resolve(
+        __dirname,
+        'public/assets/headmaster_signature.png'
+      );
+      if (fs.existsSync(headmasterSigPath)) {
+        headmasterSignatureBuffer = fs.readFileSync(headmasterSigPath);
+      }
+
+      let teacherSignatureBuffer: Buffer | null = null;
+      const teacherSigPath = path.resolve(
+        __dirname,
+        'public/assets/teacher_signature.png'
+      );
+      if (fs.existsSync(teacherSigPath)) {
+        teacherSignatureBuffer = fs.readFileSync(teacherSigPath);
+      }
+
+      const doc = createReportDocxDocument(
+        config,
+        students,
+        crestBuffer,
+        headmasterSignatureBuffer,
+        teacherSignatureBuffer
+      );
       const docxBuffer = await Packer.toBuffer(doc);
 
       res.setHeader(
